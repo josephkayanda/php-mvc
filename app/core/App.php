@@ -5,36 +5,45 @@ defined('ROOTPATH') OR exit('Access Denied!');
 /**
  * App class
  */
-
 class App
 {
     private $controller = "Home";
     private $method     = "index"; 
-    private function splitURL(){
+
+    /**
+     * Split URL into controller, method, and parameters
+     *
+     * @return array URL components
+     */
+    private function splitURL()
+    {
         $URL = $_GET['url'] ?? 'home';
         $URL = explode("/", trim($URL, "/"));
         return $URL;
     }
     
+    /**
+     * Load the specified controller and execute the method with parameters
+     */
     public function loadController()
     {
         $URL = $this->splitURL();
        
-        /** select controller **/
+        /** Select controller **/
         $filename = "../app/controllers/". ucfirst($URL[0]).".php";
         if (file_exists($filename)) {
             require $filename;
             $this->controller = ucfirst($URL[0]);
             unset($URL[0]);
-        }else{
+        } else {
             $filename = "../app/controllers/_404.php";
             require $filename;
             $this->controller = "_404";
         }
 
-        $controller = new $this->controller;
+        $controller = new ('Controller\\'.$this->controller);
 
-        /** select method **/
+        /** Select method **/
         if (!empty($URL[1])) {
             if (method_exists($controller, $URL[1])) {
                 $this->method = $URL[1];
@@ -42,7 +51,6 @@ class App
             }
         }
         
-        call_user_func_array([$controller, $this->method],$URL);
+        call_user_func_array([$controller, $this->method], $URL);
     }
 }
-

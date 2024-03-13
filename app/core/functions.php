@@ -82,7 +82,6 @@ function get_image(mixed $file = '',string $type = 'post'):string
 
 /**
  * Returns pagination variables.
- *
  * @return array An array containing pagination variables.
  */
 function get_pagination_vars(): array
@@ -107,13 +106,10 @@ function get_pagination_vars(): array
 }
 
 
-
 /**
  * Saves or displays a saved message to the user.
- *
  * @param string|null $msg   The message to be saved or displayed (optional).
  * @param bool         $clear Whether to clear the saved message after displaying (default: false).
- *
  * @return string|bool If a message is provided, it is saved and returns true; if no message is provided but a saved message exists, returns the saved message (and clears it if $clear is true);  otherwise, returns false.
  *              
  */
@@ -149,9 +145,7 @@ function message(string $msg = null, bool $clear = false)
 
 /**
  * Return URL variables.
- *
  * @param string|int $key The key representing the URL variable to retrieve.
- *
  * @return mixed The value of the specified URL variable or null if not found.
  */
 function URL($key): mixed
@@ -188,14 +182,11 @@ function URL($key): mixed
 }
 
 
-
 /**
  * Displays input values after a page refresh.
- *
  * @param string $key      The name attribute of the input field.
  * @param string $value    The value to compare against for checking.
  * @param string $default  The default value to compare against for a GET request (optional).
- *
  * @return string Returns 'checked' if the condition is met, otherwise an empty string.
  */
 function old_checked(string $key, string $value, string $default = ""): string
@@ -221,11 +212,9 @@ function old_checked(string $key, string $value, string $default = ""): string
 
 /**
  * Retrieves the value of a form input field from either $_POST or $_GET arrays.
- *
  * @param string $key      The name attribute of the input field.
  * @param mixed  $default  The default value to return if the input field is not set (optional).
  * @param string $mode     The mode to determine whether to check $_POST or $_GET (default: 'post').
- *
  * @return mixed The value of the input field if set; otherwise, the default value.
  */
 function old_value(string $key, mixed $default = "", string $mode = 'post'): mixed
@@ -246,12 +235,10 @@ function old_value(string $key, mixed $default = "", string $mode = 'post'): mix
 
 /**
  * Generates the "selected" attribute for a dropdown option based on form data.
- *
  * @param string $key      The name attribute of the dropdown field.
  * @param mixed  $value    The value to compare against for marking as selected.
  * @param mixed  $default  The default value to compare against (optional).
  * @param string $mode     The mode to determine whether to check $_POST or $_GET (default: 'post').
- *
  * @return mixed The string "selected" if the condition is met; otherwise, an empty string.
  */
 function old_select(string $key, mixed $value, mixed $default = "", string $mode = 'post'): mixed
@@ -280,9 +267,7 @@ function old_select(string $key, mixed $value, mixed $default = "", string $mode
 
 /**
  * Returns a user-readable date format.
- *
  * @param mixed $date The input date to be formatted.
- *
  * @return string The formatted date in the "jS M, Y" (e.g., "1st Jan, 2022") format.
  */
 function get_date($date)
@@ -327,10 +312,8 @@ function add_root_to_images($contents)
 
 /**
  * Converts images from text editor content to actual files
- *
  * @param string $content The text editor content containing images
  * @param string $folder  The folder where the images will be saved
- *
  * @return string The updated content with references to the new image files
  */
 function remove_images_from_content($content, $folder = "uploads/")
@@ -387,7 +370,6 @@ function remove_images_from_content($content, $folder = "uploads/")
 
 /**
  * Deletes images from text editor content.
- *
  * @param string $content      The original content containing HTML.
  * @param string $content_new  The new content for comparison (optional).
  * @return void
